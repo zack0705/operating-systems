@@ -1,0 +1,1645 @@
+SHELL SCRIPTS :
+	1}1. Display the following patterns.
+
+		echo "enter rows"
+		read z
+
+		for((i=1;i<=z;i++))
+		{
+			for((j=1;j<=i;j++))
+			{
+				echo -n $i
+			}
+			echo " "
+		}
+
+		echo "enter rows"
+		read z
+
+		for((i=1;i<=z;i++))
+		{
+			for((j=1;j<=i;j++))
+			{
+				echo -n $j
+			}
+			echo " "
+		}
+
+		echo "enter rows"
+		read z
+
+		for((i=1;i<=z;i++))
+		{
+			for((j=0;j<i;j++))
+			{
+				if [ $((j%2)) -eq 0 ]
+				then
+					echo -n "|"
+				else
+					echo -n " "
+				fi
+			}
+			echo -n "_"
+			echo ""
+		}
+
+		echo "enter rows"
+		read z
+		for((i=0;i<z;i++))
+		{
+			for((j=0;j<=i;j++))
+			{
+				echo -n "*"
+			}
+			echo
+		}
+
+		echo "enter rows"
+		read z
+		for((i=0;i<z;i++))
+		{
+			for((j=0;j<=i;j++))
+			{
+				echo -n "*"
+			}
+			echo
+		
+		}
+		for((i=z;i>=0;i--))
+		{
+			for((j=0;j<=i;j++))
+			{
+				echo -n "*"
+			}
+			echo
+		
+		}
+
+		echo "enter rows"
+		read z
+		for((i=0;i<z;i++))
+		{
+			for k in $(seq 0 $((z-2-i)))
+			do
+				echo -n " "
+			done
+		
+			for k in $(seq 0 $((1+2*i)))
+			{
+				if [ $((i+1%2)) -eq 0 ]
+				then
+					if [ $((k%2)) -eq 0 ]
+					then
+						echo -n " "
+					else
+						echo -n $((i+1))
+					fi
+				else
+					if [ $((k%2)) -eq 0 ]
+					then
+						echo -n $((i+1))
+					else
+						echo -n " "
+					fi
+				fi
+			}
+			echo " "
+		}
+
+		echo "enter rows"
+		read z
+		for((i=0;i<=(z/2);i++))
+		{
+			for k in $(seq 0 $((z/2-i)))
+			do  
+				echo -n " "
+			done
+		
+			for k in $(seq 0 $((1+2*i)))
+			{
+				if [ $((i+1%2)) -eq 0 ]
+				then
+					if [ $((k%2)) -eq 0 ]
+					then
+						echo -n " "
+					else
+						echo -n "*"
+					fi
+				else
+					if [ $((k%2)) -eq 0 ]
+					then
+						echo -n "*"
+					else
+						echo -n " "
+					fi
+				fi
+			}
+			echo " "
+		}
+		for i in $(seq 0 $((z/2-1)))
+		{
+			for k in $(seq 0 $((i+1)))
+			do
+				echo -n " "
+			done
+		
+			for k in $(seq 0 $((1+2*(z/2-1-i))))
+			{
+				if [ $((i+1%2)) -eq 0 ]
+				then
+					if [ $((k%2)) -eq 0 ]
+					then
+						echo -n " "
+					else
+						echo -n "*"
+					fi
+				else
+					if [ $((k%2)) -eq 0 ]
+					then
+						echo -n "*"
+					else
+						echo -n " "
+					fi
+				fi
+			}
+			echo " "
+		}
+
+		OUTPUT
+				enter rows
+			5
+			1 
+			22 
+			333 
+			4444 
+			55555 
+			enter rows
+			5
+			1 
+			12 
+			123 
+			1234 
+			12345 
+			enter rows
+			5
+			|_
+			| _
+			| |_
+			| | _
+			| | |_
+			enter rows
+			5
+			*
+			**
+			***
+			****
+			*****
+			enter rows
+			5
+			*
+			**
+			***
+			****
+			*****
+			******
+			*****
+			****
+			***
+			**
+			*
+			enter rows
+			5
+			    1  
+			   2 2  
+			  3 3 3  
+			 4 4 4 4  
+			5 5 5 5 5  
+			enter rows
+			5
+			   *  
+			  * *  
+			 * * *  
+			  * *  
+			   *  
+
+
+
+	2}2. Write a shell script to find the factorial of a given no.
+		 echo "enter no"
+		read a
+		b=1
+		for((i=1;i<=a;i++))
+		{
+			b=$((b*i))
+		}
+		echo $b
+
+		OUTPUT
+	
+			enter no
+			5
+			120
+
+	3} 3. Write a shell script to find the largest of three numbers and also find the total and average.
+		echo "enter 3 nos"
+		read a
+		read b
+		read c
+		if [ $a -gt $b -a $a -gt $c ]
+		then
+			echo $a
+		elif [ $b -gt $c ]
+		then
+			echo $b
+		else
+			echo $c
+		fi
+		tot=$((a+b+c))
+		avg=$((tot/3))
+		echo -n "avg is "
+		echo "scale=2;($a + $b + $c)/3"|bc
+		echo "total is $tot"
+
+		OUTPUT
+				enter 3 nos
+			5
+			7
+			1
+			7
+			avg is 4.33
+			total is 13
+		
+	4} palindrome?
+
+		echo "enter string"
+		read a
+		j=0
+		for((i=0; i<${#a}; i++))
+		{
+			if [ ${a:i:1} != ${a:${#a}-i-1:1} ]
+			then
+				j=1
+			fi
+		}
+
+		if [ $j -eq 0 ]
+		then 
+			echo "ok"
+		else
+			echo "no"
+		fi
+	
+		OUTPUT
+	
+			enter string
+			abcd
+			no
+
+
+	5}5. Write a shell script to find whether a given year (4 digits) is leap year or not.
+		echo "enter year"
+		read a
+		b=`expr $a % 100`
+		if [ $b -eq 0 ]
+		then
+			c=`expr $a % 400`
+			if [ $c -eq 0 ]
+			then
+				echo "yes"
+			else
+				echo "no"
+			fi
+		else
+			c=`expr $a % 4`
+			if [ $c -eq 0 ]
+			then
+				echo "yes"
+			else
+				echo "no"
+			fi
+		fi	
+
+		OUTPUT
+			enter year
+			1998
+			no
+	6}6. Write a shell script to find the sum of first n numbers.
+		echo "enter no"
+		read a
+		b=0
+		for((i=1;i<=a;i++))
+		{
+			b=$((b+i))
+		}
+		echo $b
+
+		OUTPUT
+	
+			enter no
+			5
+			15
+
+	7}7. Write a shell script to check whether a given no. is prime or not.
+		echo "enter a"
+		read a
+		b=0
+		for((i=2; i<$a; i++))
+		{
+			if [ $((a%i)) -eq 0 ]
+			then
+				b=1
+			fi
+		}
+
+		if [ $b -eq 0 ]
+		then
+			echo "prime"
+		else
+			echo "not prime"
+		fi
+
+		OUTPUT
+			enter a
+			7
+			prime
+
+	8}8. Write a shell script to generate a multiplication table.
+		echo "enter no"
+		read a
+		for((i=1;i<=10;i++))
+		{
+			echo " $a x $i = $((a*i))"
+		}
+	
+		OUTPUT
+			enter no
+			4
+			 4 x 1 = 4
+			 4 x 2 = 8
+			 4 x 3 = 12
+			 4 x 4 = 16
+			 4 x 5 = 20
+			 4 x 6 = 24
+			 4 x 7 = 28
+			 4 x 8 = 32
+			 4 x 9 = 36
+			 4 x 10 = 40
+
+	9}9. Write a command file that displays the following:
+	a) Calendar of the current month and year.
+	b) Current date in dd/mm/yy and time.
+	c) Display “Good Morning / Good Afternoon / Good Evening” according to the current login
+	time.
+	d) User name, user’s home directory.
+	e) Terminal name, terminal type.
+	f) Machine name.
+	g) No. of user currently logged in.
+
+		cal
+		date +"%D %R"
+		a=$(date +"%H")
+		if [ $a -lt 12 ]
+		then 
+			echo "good morning"
+		elif [ $a -lt 16 ]
+		then
+			echo "good afternoon"
+		else
+			echo "good evening"
+		fi
+		a=$(whoami)
+		echo $a $HOME
+		who | cut -c10-13
+		echo $TERM
+		hostname
+		who --count
+
+		OUTPUT
+			  September 2019     
+			Su Mo Tu We Th Fr Sa  
+			 1  2  3  4  5  6  7  
+			 8  9 10 11 12 13 14  
+			15 16 17 18 19 20 21  
+			22 23 24 25 26 27 28  
+			29 30                 
+					      
+			09/12/19 23:52
+			good evening
+			zackuma /home/zackuma
+			:0  
+			xterm-256color
+			Z
+			zackuma
+			# users=1
+
+	10}10. Write a shell script to find the sum of n numbers which are passed by command line
+	argument.
+		b=0
+		for i in $*
+		do
+			b=$((b+$i))
+		done
+		echo $b
+
+		OUTPUT
+			bash 10.sh 5 10
+			15
+
+	11}11. Write a shell script to find the sum of digits of a number entered through command line
+	argument and find whether sum is even or not.
+
+		=$1
+		b=1
+		c=0
+		while [ 1 ]
+		do
+			if [ $((a/b)) -ne 0 ]
+			then
+				b=$((b*10))
+				c=$(( c+( (a%b)-c ) / (b/10) ))
+			else
+				break
+			fi
+		done
+		echo $c
+
+		if [ $((c%2)) -eq 0 ]
+		then
+			echo "even"
+		else
+			echo "odd"
+		fi
+
+		OUTPUT
+
+			bash 11.sh 15
+			6
+			even
+
+	12}12. Write a shell script to print all the values which are passed by command line argument in
+	reverse way. If total values entered through command line argument are more than 5 print
+	“Invalid number of arguments”.
+
+		if [ $# -gt 5 ]
+		then
+			echo "invalid"
+			exit
+		else
+			echo $5 $4 $3 $2 $1
+		fi
+
+		OUTPUT
+
+			bash 12.sh 15 2 7 8
+			8 7 2 15
+
+	13}13. Write a shell script to check whether a given user is currently logged in or not.
+
+		a=$(who | grep $1 -wc)
+		if [ $a -eq 0 ]
+		then
+			echo "no"
+		else
+			echo "yes"
+		fi
+
+		OUTPUT
+
+			bash 13.sh 0
+			yes
+
+	14}14. Write a shell script to obtain the effect of COPY CON in DOS.
+
+		cat>Hello
+		chmod +x Hello
+		./Hello
+
+	15}15. Write a script that constitutes a file by the last three lines of every file specified in the
+	command line arguments
+
+		cat>file
+
+		for i in $*
+		do
+		
+			echo $(tail -n 3 $i) >> file
+		done
+
+		OUTPUT
+	
+		svgij svjkfjbn svjn
+
+	16(20)}20. Write a shell script to make the following operations menu based:
+	a) Addition
+	b) Subtraction
+	c) Multiplication
+	d) Division
+
+		echo "a) Addition"
+		echo "b) Subtraction"
+		echo "c) Multiplication"
+		echo "d) Division"
+		echo Enter your choice\:
+		read a
+		case "$a" in
+		a)echo Enter two number\:
+			read a
+			read b
+			echo Sum\: `expr $a \+ $b`;;
+		b)echo Enter two number\:
+			read a
+			read b
+			echo Difference\: `expr $a \- $b`;;
+		c)echo Enter two number\:
+			read a
+			read b
+			echo Product\: `expr $a \* $b`;;
+		d)echo Enter two number\:
+			read a
+			read b
+			echo Quotient\: `expr $a \/ $b`;;
+		*) echo "Invalid Input"
+		esac
+
+		Output:
+
+		bash 15.sh
+		a) Addition
+		b) Subtraction
+		c) Multiplication
+		d) Division
+		Enter your choice:
+		a
+		Enter two number:
+		2
+		3
+		Sum: 5
+
+	17(19)}19. Write a shell script to print contents of file from given line no. to next given line number.
+
+		echo -n "enter file name"
+		read name
+		echo -n "start"
+		read start
+		echo -n "end"
+		read end
+		sed -n $start,$end\p $name | cat > line.txt
+		cat line.txt
+	
+		OUTPUT
+	
+			enter file name1.sh
+			start2
+			end4
+			read z
+
+			for((i=1;i<=z;i++))
+
+
+
+	18(21)}21. Write a shell script to find a given date fall on a weekday or a weekend.
+
+		echo "Enter date in MM/DD/YYY format:"
+		read a
+		day=`date --date="$a" +%u`
+		echo $day
+		if [ $day = 6 -o $day = 7 ]
+		then
+			echo "it is a Weekend"
+		else
+			echo "it is Weekday"
+		fi
+	
+		OUTPUT
+	
+		Enter date in MM/DD/YYY format:
+		09/15/2019
+		7
+		Given Date is a Weekend
+
+FCFS :
+
+	#include<stdio.h>
+
+	struct process{
+		int id,at,bt,ct,tat,wt;
+	};
+
+	void sort(int n, struct process p[n]){
+		int i;
+		struct process x;
+		int count=1;
+		int j=1;
+		while(count!=0){
+			count=0;
+			for(i=0;i<n-j;i++){
+				if(p[i].at > p[i+1].at){
+					x = p[i];
+					p[i] = p[i+1];
+					p[i+1] = x;
+					count++;
+				}
+			}
+			j++;
+		}
+	}
+
+	void main(){
+		int a,b,n,i;
+		printf("enter to number of processes");
+		scanf("%d", &n);
+	
+		struct process ar[n];
+	
+		printf("enter processes' arrival time and burst time");
+		for(i=0;i<n;i++){
+			ar[i].id = i+1;
+			scanf("%d", &ar[i].at);
+			scanf("%d", &ar[i].bt);
+		}
+	
+		int current=0;
+		double avgtat=0;
+		double avgwt=0;
+		for(i=0;i<n;i++){
+			if(current<ar[i].at){
+				current = ar[i].at;
+			}
+			ar[i].ct = current + ar[i].bt;
+			current = current + ar[i].bt;
+			ar[i].tat = ar[i].ct - ar[i].at;
+			ar[i].wt = ar[i].ct - ar[i].bt - ar[i].at;
+			avgtat += ar[i].tat;
+			avgwt += ar[i].wt;
+		
+			printf("id = %d at = %d bt = %d ct = %d tat = %d wt = %d\n", ar[i].id, ar[i].at, ar[i].bt, ar[i].ct, ar[i].tat, ar[i].wt);
+		}
+	
+		avgtat /= n;
+		avgwt /= n;
+		double m = n;
+		double t = (m/(current-ar[0].at));
+	
+		printf("avg tat = %f\n", avgtat);
+		printf("avg wt = %f\n", avgwt);
+		printf("throughput = %f\n", t);
+	}
+
+
+OUTPUT :
+
+	stduent@cp26-OptiPlex-3050:~/Desktop/Z$ gcc fcfs.c 
+	stduent@cp26-OptiPlex-3050:~/Desktop/Z$ ./a.out 
+	enter to number of processes4
+	enter processes' arrival time and burst time1
+	5
+	0
+	4
+	2
+	5
+	1
+	4
+	id = 1 at = 1 bt = 5 ct = 6 tat = 5 wt = 0
+	id = 2 at = 0 bt = 4 ct = 10 tat = 10 wt = 6
+	id = 3 at = 2 bt = 5 ct = 15 tat = 13 wt = 8
+	id = 4 at = 1 bt = 4 ct = 19 tat = 18 wt = 14
+	avg tat = 11.500000
+	avg wt = 7.000000
+	throughput = 0.222222
+
+
+ROUND ROBIN :
+
+	#include<stdio.h>
+	#include<stdlib.h>
+	#include<string.h>
+	# define T 2
+
+	struct prog{
+		int id,at,bt,ct,tat,wt,rt,remain;
+		struct prog* ptr;	
+	};
+
+	void display(struct prog * a){
+		struct prog * b;
+		b=a;
+		while(b != NULL){
+			printf("%d ", b->id);
+			//printf("next = %d\n", b->ptr->id);
+			b=b->ptr;
+		}
+	}
+
+	void main(){
+		int i=1, count=0;
+		struct prog *p;
+		struct prog * head, * tail, * ansh=NULL, * anst=NULL, * t ,* x; 
+		while(1){
+			printf("enter arrival and burst of %d", i);
+			struct prog * n  = (struct prog *)malloc(sizeof(struct prog));
+			scanf("%d %d", &n->at, &n->bt);
+			if(n->at==-1){
+				tail = p;
+				break;
+			}
+			count++;
+			n->id = i;
+			n->remain = n->bt;
+			n->rt = -1;
+			if(i==1){
+				head = n;
+				p = n;
+				i++;
+				continue;
+			}
+			p->ptr = n;
+			n->ptr = NULL;
+			p=n;
+			i++;
+		}
+		int current=0;
+	
+		printf("\nsjgvcha\n");
+	
+		//display(head);
+	
+		printf("\n");
+	//	printf("%d\n----------", head->at);
+	
+	//	String p ="";
+		int j=0;
+		int count2 = 0;
+		int z=0;
+	//	printf("\nhihi\n");
+		while(1){
+		//	printf("hi");
+			if(head == NULL){
+				break;
+			}
+			if(current < head->at){
+				//p += "_"
+				for(j=0;j<((head->at)-current);j++){
+					printf("_");
+				}
+				current = head->at;
+			}
+			if(head->rt == -1){
+				head->rt = current - head->at;
+			}
+		
+			for(j=T;j>0;j--){
+				printf("%d", head->id);
+				head->remain--;
+				p += head->id;
+				current++;
+				if(head->remain == 0){
+					//insert into ans list
+					//**** \|| head = head->ptr;
+					break;
+				}
+			}
+			t = head;
+			head = head->ptr;
+			x = head;
+		
+			if(t->remain == 0){
+				//printf("%d", t->id);
+				t->ct = current;
+				t->tat = t->ct - t->at;
+				t->wt = t->tat - t->bt;
+				if(ansh==NULL){
+					ansh = t;
+					anst = t;
+				}
+				else{
+					anst->ptr = t;
+					anst = t;
+				}
+			}
+			else{
+				while(1){
+					if(head==NULL || head->at > current){
+						head = t;
+						break;
+					}
+					else if(x->ptr == NULL){
+						x->ptr = t;
+						t->ptr = NULL;
+						break;
+					}
+					else if(x->ptr->at > current){
+						t->ptr = x->ptr;
+						x->ptr = t;
+						break;
+					}
+					else{
+						x = x->ptr;
+					}
+				}
+			}
+		}
+		x = ansh;
+		printf("\nID CT TAT WT RT\n");
+		while(x != NULL){
+			printf("%d %d %d %d %d\n", x->id, x->ct, x->tat, x->wt, x->rt);
+			x = x->ptr;
+		}
+	}
+
+
+OUTPUT :
+
+	stduent@cp26-OptiPlex-3050:~/Desktop/Z$ gcc rr.c 
+	stduent@cp26-OptiPlex-3050:~/Desktop/Z$ ./a.out 
+	enter arrival and burst of 11
+	2
+	enter arrival and burst of 22
+	3
+	enter arrival and burst of 33
+	1
+	enter arrival and burst of 4-1
+	-1
+
+	sjgvcha
+
+	_112232
+	ID CT TAT WT RT
+	1 3 2 0 0
+	3 6 3 2 2
+	2 7 5 2 1
+
+
+SJF :
+
+	#include<stdio.h>
+	#include<stdbool.h>
+
+	struct process{
+		int id,at,bt,ct,tat,wt;
+		bool done;
+	};
+
+	void main(){
+		int a,b,n,i;
+		double avgtat=0;
+		double avgwt=0;
+		int left=0;
+		printf("enter to number of processes");
+		scanf("%d", &n);
+	
+		struct process ar[n];
+	
+		printf("enter processes' arrival time and burst time");
+		for(i=0;i<n;i++){
+			ar[i].id = i+1;
+			ar[i].done = false;
+			left++;
+			scanf("%d", &ar[i].at);
+			scanf("%d", &ar[i].bt);
+		}
+	
+		struct process *p;
+		int current=0;
+		while(left!=0){
+			i=0;
+			while(ar[i].done!=false){
+				i++;
+			}
+			p=&ar[i];
+			i++;
+			while(current<p->at){
+				current++;
+			}
+			while(ar[i].at <= current && i<n){
+				if(p->bt > ar[i].bt && ar[i].done==false){
+					p = &ar[i];
+				}
+				i++;
+			}
+			left--;
+			p->done=true;
+			p->ct = current + p->bt;
+			current = current + p->bt;
+			p->tat = p->ct - p->at;
+			p->wt = p->ct - p->bt - p->at;
+			avgtat += p->tat;
+			avgwt += p->wt;
+		
+			printf("id = %d at = %d bt = %d ct = %d tat = %d wt = %d\n", p->id, p->at, p->bt, p->ct, p->tat, p->wt);
+		}
+		avgtat /= n;
+		avgwt /= n;
+		double m = n;
+		double t = (m/(current-ar[0].at));
+	
+		printf("avg tat = %f\n", avgtat);
+		printf("avg wt = %f\n", avgwt);
+		printf("throughput = %f\n", t);
+
+	}
+
+
+OUTPUT :
+
+	stduent@cp26-OptiPlex-3050:~/Desktop/Z$ gcc sjf.c 
+	stduent@cp26-OptiPlex-3050:~/Desktop/Z$ ./a.out 
+	enter to number of processes3
+	enter processes' arrival time and burst time1
+	4
+	2
+	3
+	3
+	1
+	id = 1 at = 1 bt = 4 ct = 5 tat = 4 wt = 0
+	id = 3 at = 3 bt = 1 ct = 6 tat = 3 wt = 2
+	id = 2 at = 2 bt = 3 ct = 9 tat = 7 wt = 4
+	avg tat = 4.666667
+	avg wt = 2.000000
+	throughput = 0.375000
+
+
+SRTF :
+
+	#include<stdio.h>
+	#include<stdbool.h>
+
+	struct process{
+		int id,at,bt,ct,tat,wt,rt;
+		bool done;
+	};
+
+	void main(){
+		int a,b,n,i;
+		double avgtat=0;
+		double avgwt=0;
+		int left=0;
+		printf("enter to number of processes");
+		scanf("%d", &n);
+	
+		struct process ar[n];
+	
+		printf("enter processes' arrival time and burst time");
+		for(i=0;i<n;i++){
+			ar[i].id = i+1;
+			ar[i].done = false;
+			left++;
+			scanf("%d", &ar[i].at);
+			scanf("%d", &ar[i].bt);
+			ar[i].rt = ar[i].bt;
+		}
+	
+		struct process *p;
+		int current=0;
+		while(left!=0){
+			i=0;
+			while(ar[i].done!=false){
+				i++;
+			}
+			p=&ar[i];
+			i++;
+			while(current<p->at){
+				current++;
+			}
+			while(ar[i].at <= current && i<n){
+				if(p->rt > ar[i].rt && ar[i].done==false){
+					p = &ar[i];
+				}
+				i++;
+			}
+		//	printf("%d ", p->id);
+			p->rt--;
+			current++;
+			if(p->rt == 0){
+				left--;
+				p->done=true;
+				p->ct = current;// + p->bt;
+	//			current = current + p->bt;
+				p->tat = p->ct - p->at;
+				p->wt = p->ct - p->bt - p->at;
+				avgtat += p->tat;
+				avgwt += p->wt;
+		
+				printf("id = %d at = %d bt = %d ct = %d tat = %d wt = %d\n", p->id, p->at, p->bt, p->ct, p->tat, p->wt);
+			}
+		}
+		avgtat /= n;
+		avgwt /= n;
+		double m = n;
+		double t = (m/(current-ar[0].at));
+	
+		printf("avg tat = %f\n", avgtat);
+		printf("avg wt = %f\n", avgwt);
+		printf("throughput = %f\n", t);
+
+	}
+
+
+OUTPUT :
+
+	stduent@cp26-OptiPlex-3050:~/Desktop/Z$ gcc srtf.c 
+	stduent@cp26-OptiPlex-3050:~/Desktop/Z$ ./a.out 
+	enter to number of processes3
+	enter processes' arrival time and burst time1
+	4
+	2
+	3
+	3
+	1
+	id = 3 at = 3 bt = 1 ct = 4 tat = 1 wt = 0
+	id = 1 at = 1 bt = 4 ct = 6 tat = 5 wt = 1
+	id = 2 at = 2 bt = 3 ct = 9 tat = 7 wt = 4
+	avg tat = 4.333333
+	avg wt = 1.666667
+	throughput = 0.375000
+
+
+PRIORITY NON-PREMPTIVE :
+
+	#include<stdio.h>
+	#include<stdbool.h>
+
+	struct process{
+		int id,at,bt,ct,tat,wt,pr;
+		bool done;
+	};
+
+	void main(){
+		int a,b,n,i;
+		double avgtat=0;
+		double avgwt=0;
+		int left=0;
+		printf("enter to number of processes");
+		scanf("%d", &n);
+	
+		struct process ar[n];
+	
+		printf("enter processes' arrival time and burst time and prio");
+		for(i=0;i<n;i++){
+			ar[i].id = i+1;
+			ar[i].done = false;
+			left++;
+			scanf("%d", &ar[i].at);
+			scanf("%d", &ar[i].bt);
+			scanf("%d", &ar[i].pr);
+		}
+	
+		struct process *p;
+		int current=0;
+		while(left!=0){
+			i=0;
+			while(ar[i].done!=false){
+				i++;
+			}
+			p=&ar[i];
+			i++;
+			while(current<p->at){
+				current++;
+			}
+			while(ar[i].at <= current && i<n){
+				if(p->pr < ar[i].pr && ar[i].done==false){
+					p = &ar[i];
+				}
+				i++;
+			}
+			left--;
+			p->done=true;
+			p->ct = current + p->bt;
+			current = current + p->bt;
+			p->tat = p->ct - p->at;
+			p->wt = p->ct - p->bt - p->at;
+			avgtat += p->tat;
+			avgwt += p->wt;
+		
+			printf("id = %d at = %d bt = %d ct = %d tat = %d wt = %d\n", p->id, p->at, p->bt, p->ct, p->tat, p->wt);
+		}
+		avgtat /= n;
+		avgwt /= n;
+		double m = n;
+		double t = (m/(current-ar[0].at));
+	
+		printf("avg tat = %f\n", avgtat);
+		printf("avg wt = %f\n", avgwt);
+		printf("throughput = %f\n", t);
+
+	}
+
+
+OUTPUT :
+
+	stduent@cp26-OptiPlex-3050:~/Desktop/Z$ gcc prio.c 
+	stduent@cp26-OptiPlex-3050:~/Desktop/Z$ ./a.out 
+	enter to number of processes3
+	enter processes' arrival time and burst time and prio1
+	2
+	4
+	2
+	3
+	1
+	2
+	1
+	4
+	id = 1 at = 1 bt = 2 ct = 3 tat = 2 wt = 0
+	id = 3 at = 2 bt = 1 ct = 4 tat = 2 wt = 1
+	id = 2 at = 2 bt = 3 ct = 7 tat = 5 wt = 2
+	avg tat = 3.000000
+	avg wt = 1.000000
+	throughput = 0.500000
+
+
+PRIORITY PREEMPTIVE :
+
+	#include<stdio.h>
+	#include<stdbool.h>
+
+	struct process{
+		int id,at,bt,ct,tat,wt,rt, pr;
+		bool done;
+	};
+
+	void main(){
+		int a,b,n,i;
+		double avgtat=0;
+		double avgwt=0;
+		int left=0;
+		printf("enter to number of processes");
+		scanf("%d", &n);
+	
+		struct process ar[n];
+	
+		printf("enter processes' arrival time and burst time and prio");
+		for(i=0;i<n;i++){
+			ar[i].id = i+1;
+			ar[i].done = false;
+			left++;
+			scanf("%d", &ar[i].at);
+			scanf("%d", &ar[i].bt);
+			scanf("%d", &ar[i].pr);
+			ar[i].rt = ar[i].bt;
+		}
+	
+		struct process *p;
+		int current=0;
+		while(left!=0){
+			i=0;
+			while(ar[i].done!=false){
+				i++;
+			}
+			p=&ar[i];
+			i++;
+			while(current<p->at){
+				current++;
+			}
+			while(ar[i].at <= current && i<n){
+				if(p->pr < ar[i].pr && ar[i].done==false){
+					p = &ar[i];
+				}
+				i++;
+			}
+			//printf("%d ", p->id);
+			p->rt--;
+			current++;
+			if(p->rt == 0){
+				left--;
+				p->done=true;
+				p->ct = current;// + p->bt;
+	//			current = current + p->bt;
+				p->tat = p->ct - p->at;
+				p->wt = p->ct - p->bt - p->at;
+				avgtat += p->tat;
+				avgwt += p->wt;
+		
+				printf("id = %d at = %d bt = %d ct = %d tat = %d wt = %d\n", p->id, p->at, p->bt, p->ct, p->tat, p->wt);
+			}
+		}
+		avgtat /= n;
+		avgwt /= n;
+		double m = n;
+		double t = (m/(current-ar[0].at));
+	
+		printf("avg tat = %f\n", avgtat);
+		printf("avg wt = %f\n", avgwt);
+		printf("throughput = %f\n", t);
+
+	}
+
+
+OUTPUT :
+
+	stduent@cp26-OptiPlex-3050:~/Desktop/Z$ gcc priopre.c 
+	stduent@cp26-OptiPlex-3050:~/Desktop/Z$ ./a.out 
+	enter to number of processes3
+	enter processes' arrival time and burst time and prio0
+	3
+	1
+	1
+	2
+	5
+	2
+	4
+	2
+	id = 2 at = 1 bt = 2 ct = 3 tat = 2 wt = 0
+	id = 3 at = 2 bt = 4 ct = 7 tat = 5 wt = 1
+	id = 1 at = 0 bt = 3 ct = 9 tat = 9 wt = 6
+	avg tat = 5.333333
+	avg wt = 2.333333
+	throughput = 0.333333
+
+
+BANKER :
+
+	#include<stdio.h>
+
+	void main(){
+		int n,r,i,j,c,t,y;
+		printf("enter no of resources");
+		scanf("%d", &n);
+		int re[n],av[n];
+		for(i=0;i<n;i++){
+			printf("enter no of objects of resource %d",i);
+			scanf("%d", &re[i]);
+			av[i] = re[i];
+		}
+		printf("enter no of process");
+		scanf("%d",&r);
+		int tab[r][2*n+1];
+		for(i=0;i<r;i++)
+			for(j=0;j<n;j++){
+				printf("enter max for %d %d : ", i , j);
+				scanf("%i", &tab[i][j]);
+				printf("enter alloted for %d %d : ", i , j);
+				scanf("%i", &tab[i][j+n]);
+				tab[i][j] = tab[i][j] - tab[i][j+n];
+				av[j] -= tab[i][j+n];
+				tab[i][2*n] = 1;
+			}
+		
+		c = r;
+		t = 0;
+		y = 0;
+		while(c!=0){
+			y = 0;
+			for(i=0;i<r;i++){
+				t = 0;
+				if(tab[i][2*n] == 0)
+					continue;
+				for(j=0;j<n;j++){
+					if(tab[i][j] > av[j]){
+						t = 1;
+						break;
+					}
+				}
+				if(t==0){
+					tab[i][2*n] = 0;
+					break;
+				}
+				y++;
+			}
+			if(y==r){
+				printf("DEADLOCK");
+				break;
+			}
+			printf("%d->", i);
+			c--;
+			for(j=0;j<n;j++)
+				av[j] += tab[i][j+n];
+		}
+	}
+
+OUTPUT :
+
+	stduent@cp26-OptiPlex-3050:~/Desktop/Z$ gcc banker.c 
+	stduent@cp26-OptiPlex-3050:~/Desktop/Z$ ./a.out 
+	enter no of resources4
+	enter no of objects of resource 06
+	enter no of objects of resource 12
+	enter no of objects of resource 24
+	enter no of objects of resource 38
+	enter no of process4
+	enter max for 0 0 : 4
+	enter alloted for 0 0 : 9
+	enter max for 0 1 : 2
+	enter alloted for 0 1 : 5
+	enter max for 0 2 : 7
+	enter alloted for 0 2 : 1
+	enter max for 0 3 : 5
+	enter alloted for 0 3 : 7
+	enter max for 1 0 : 2
+	enter alloted for 1 0 : 1
+	enter max for 1 1 : 3
+	enter alloted for 1 1 : 4
+	enter max for 1 2 : 2
+	enter alloted for 1 2 : 6
+	enter max for 1 3 : 5
+	enter alloted for 1 3 : 2
+	enter max for 2 0 : 4
+	enter alloted for 2 0 : 1
+	enter max for 2 1 : 2
+	enter alloted for 2 1 : 5
+	enter max for 2 2 : 1
+	enter alloted for 2 2 : 7
+	enter max for 2 3 : 32
+	enter alloted for 2 3 : 2
+	enter max for 3 0 : 4
+	enter alloted for 3 0 : 2
+	enter max for 3 1 : 5
+	enter alloted for 3 1 : 6
+	enter max for 3 2 : 1
+	enter alloted for 3 2 : 4
+	enter max for 3 3 : 2
+	enter alloted for 3 3 : 1
+	DEADLOCK
+
+FIBONACCI SERIES : 
+	fibo.java :
+		package fibo;
+		import java.util.Scanner;
+			
+		public class Fibo {
+		    public static void main(String[] args) {
+		        Scanner scan = new Scanner(System.in);
+		        System.out.println("enter no");
+		        int a = scan.nextInt();
+		        seq[] ar = new seq[a];
+		        int i;
+		        for(i=0; i<a; i++){
+		            ar[i] = new seq(i);
+		        }
+		        seq.arr = ar;
+		        for(i=0; i<a; i++){
+		            ar[i].start();
+		        }
+	        
+		        for(i=0; i<a; i++){
+		            System.out.println(ar[i].output);
+		        }        
+		    }
+		}
+
+	seq.java :
+		package fibo;
+		public class seq extends Thread{
+		    int output, b;
+		    static seq arr[];
+		    seq(int a){
+		        b = a;
+		    }
+		    @Override
+		    public void run(){
+		        if(b==0){
+		            output = 0;
+		        }
+		        else if(b==1 || b==2){
+		            output = 1;
+		        }
+		        else{
+		            try{
+		                    arr[b-1].join();}
+		                catch(Exception e){ }
+		            output = arr[b-1].output+arr[b-2].output;
+		        }
+		    }
+		}
+
+
+
+OUTPUT :
+	run:
+	enter no
+	30
+	0
+	1
+	1
+	2
+	3
+	5
+	8
+	13
+	21
+	34
+	55
+	89
+	144
+	233
+	377
+	610
+	987
+	1597
+	2584
+	4181
+	6765
+	10946
+	17711
+	28657
+	46368
+	75025
+	121393
+	196418
+	317811
+	514229
+	BUILD SUCCESSFUL (total time: 2 seconds)
+
+FIFO :
+
+	seq = []
+	while(1):
+		a = input("enter new")
+		if(int(a)==-1):
+			break
+		seq.append(a)
+	store = int(input("enter storage"))
+	stored = []
+	for i in range(store):
+		stored.append("-")
+	count = 0
+	for i in seq:
+		if i in stored:
+			continue
+		stored = stored[1:]
+		stored.append(i)
+		count += 1
+	print(count)
+
+OUTPUT :
+
+	stduent@cp26-OptiPlex-3050:~/Desktop/Z$ python3 fifo.py 
+	enter new2
+	enter new4
+	enter new89
+	enter new5
+	enter new3
+	enter new1
+	enter new5
+	enter new7
+	enter new22
+	enter new5
+	enter new7
+	enter new5
+	enter new-1
+	enter storage4
+	9
+
+
+LRU :
+
+seq = []
+while(1):
+	a = input("enter new")
+	if(int(a)==-1):
+		break
+	seq.append(a)
+store = int(input("enter storage"))
+actual = []
+stored = []
+
+for i in range(store):
+	stored.append("-")
+	actual.append("-")
+count = 0
+for i in seq:
+	if i in stored:
+		stored.remove(i)
+		stored.append(i)
+		continue
+	stored = stored[1:]
+	actual = actual[1:]
+	stored.append(i)
+	actual.append(i)
+	count += 1
+print(count)
+print(actual)
+
+OUTPUT :
+
+	stduent@cp26-OptiPlex-3050:~/Desktop/Z$ python3 lru.py 
+	enter new8
+	enter new4
+	enter new2
+	enter new5
+	enter new7
+	enter new1
+	enter new2
+	enter new4
+	enter new2
+	enter new7
+	enter new5
+	enter new-1
+	enter storage4
+	8
+	['7', '1', '4', '5']
+
+
+SSTF :
+
+	seq = []
+	while(1):
+		a = int(input("enter new"))
+		if(int(a)==-1):
+			break
+		seq.append(a)
+	
+	h = int(input("enter head"))
+
+	a = len(seq)
+	total = 0
+	while(a>0):
+		j = 999999
+		for i in seq:
+			if(abs(j-h)>abs(h-i)):
+				j = i
+			elif(abs(j-h)==abs(h-i)):
+				cl = 0
+				cr = 0
+				for k in seq:
+					if(k>h):
+						cr+=1
+					elif(k<h):
+						cl+=1
+				if(cr>cl):
+					if(j<h):
+						j = i
+		seq.remove(j)
+		total += abs(j-h)
+		h = j
+		a -= 1
+	print(total)
+
+OUTPUT:
+
+	stduent@cp26-OptiPlex-3050:~/Desktop/Z$ python3 sstf.py 
+	enter new4
+	enter new1
+	enter new2
+	enter new5
+	enter new7
+	enter new1
+	enter new4
+	enter new-1
+	enter head3
+	10
+
+C-SCAN :
+
+	seq = []
+	while(1):
+		a = int(input("enter new"))
+		if(int(a)==-1):
+			break
+		seq.append(a)
+	
+	h = int(input("enter head"))
+	imax = int(input("enter max"))
+
+	a = len(seq)
+	total = 0
+	while(a>0):
+		j = 999999
+		for i in seq:
+			if(abs(j-h)>abs(h-i) and (j==999999 or i>h)):
+				j = i
+			elif(abs(j-h)==abs(h-i)):
+				if(j<h and i>h):
+					j = i
+		
+		print(str(j)+"-"+str(h))	
+		seq.remove(j)
+		total += abs(j-h)
+		h = j
+		maximum = 0
+		for i in seq:
+			if(i>maximum):
+				maximum = i
+		if(maximum<h and len(seq)!=0):
+			print("back")
+			total = total + imax + imax-h 
+			h = 0
+		a -= 1
+	print(total)
+
+OUTPUT : 
+
+	stduent@cp26-OptiPlex-3050:~/Desktop/Z$ python3 c-scan.py 
+	enter new7
+	enter new1
+	enter new5
+	enter new8
+	enter new6
+	enter new3
+	enter new2
+	enter new4
+	enter new5
+	enter new-1
+	enter head5
+	enter max10
+	6-5
+	7-6
+	8-7
+	back
+	1-0
+	2-1
+	3-2
+	4-3
+	5-4
+	5-5
+	20
+
+
